@@ -36,6 +36,9 @@
   <div class="card">
 
     <h2>🔵 Base Portfolio Tracker</h2>
+<p>
+  Track wallet balances and Base assets
+</p>
 
     <p id="wallet">
       Wallet: Not Connected
