@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Base Portfolio Tracker</title>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .card {
+      background: #111827;
+      padding: 20px;
+      border-radius: 12px;
+      width: 300px;
+      margin: auto;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #0052ff;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <h2>🔵 Base Portfolio Tracker</h2>
+
+    <p id="wallet">
+      Wallet: Not Connected
+    </p>
+
+    <p id="balance">
+      Balance: --
+    </p>
+
+    <button onclick="connectWallet()">
+      Connect Wallet
+    </button>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+
+  <script>
+
+    async function connectWallet() {
+
+      if (!window.ethereum) {
+        alert("Install MetaMask");
+        return;
+      }
+
+      const provider =
+        new ethers.providers.Web3Provider(window.ethereum);
+
+      await provider.send("eth_requestAccounts", []);
+
+      const signer =
+        provider.getSigner();
+
+      const address =
+        await signer.getAddress();
+
+      const balance =
+        await provider.getBalance(address);
+
+      document.getElementById("wallet").innerText =
+        "Wallet: " + address;
+
+      document.getElementById("balance").innerText =
+        "Balance: " +
+        ethers.utils.formatEther(balance) +
+        " ETH";
+    }
+
+  </script>
+
+</body>
+</html>
