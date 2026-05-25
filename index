@@ -44,7 +44,21 @@
     <p id="balance">
       Balance: --
     </p>
+<div
+  style="
+    background:#1e293b;
+    padding:15px;
+    border-radius:10px;
+    margin-top:20px;
+  ">
 
+  <h3>Portfolio Token</h3>
+
+  <p>ETH</p>
+
+  <p>Amount: 0.00</p>
+
+</div>
     <button onclick="connectWallet()">
       Connect Wallet
     </button>
